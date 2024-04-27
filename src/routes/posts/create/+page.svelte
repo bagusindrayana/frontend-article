@@ -106,7 +106,7 @@
         </div>
         <div class="my-3">
             <Label for="editor" class="block mb-2">Content</Label>
-            <div id="editor" >
+            <div id="editor" style="min-height: 500px;">
                 <p>Hello World!</p>
                 <p>Some initial <strong>bold</strong> text</p>
                 <p><br /></p>

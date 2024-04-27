@@ -26,6 +26,7 @@
         <NavLi href="/" active={true}>Home</NavLi>
         <NavLi href="/about">About</NavLi>
         <NavLi href="/posts">All Post</NavLi>
+        <NavLi href="/preview">Preview</NavLi>
     </NavUl>
 </Navbar>
 <main>

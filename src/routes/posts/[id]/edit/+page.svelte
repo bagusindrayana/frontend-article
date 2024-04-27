@@ -116,7 +116,7 @@
         </div>
         <div class="my-3">
             <Label for="editor" class="block mb-2">Content</Label>
-            <div id="editor" >
+            <div id="editor" style="min-height: 500px;">
                 {@html data.content}
             </div>
         </div>

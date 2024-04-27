@@ -1,37 +1,37 @@
 <script>
-    import ArticleItem from '../components/ArticleItem.svelte';
-    import { onMount } from "svelte";
-    import { PUBLIC_API_URL } from "$env/static/public";
+    // import ArticleItem from '../components/ArticleItem.svelte';
+    // import { onMount } from "svelte";
+    // import { PUBLIC_API_URL } from "$env/static/public";
 
-    /** @type {Array<{
-     *  id: number;
-     * title: string;
-     * content: string;
-     * category: string;
-     * created_date: string;
-     * updated_date: string;
-     * status: string;
-     * }>} items
-     */
-    let items = [];
+    // /** @type {Array<{
+    //  *  id: number;
+    //  * title: string;
+    //  * content: string;
+    //  * category: string;
+    //  * created_date: string;
+    //  * updated_date: string;
+    //  * status: string;
+    //  * }>} items
+    //  */
+    // let items = [];
 
-    function fetchData() {
-        fetch(
-            `${PUBLIC_API_URL}/article?status=publish`,
-        )
-            .then((res) => res.json())
-            .then((data) => {
-                items = data.data;
-            })
-            .catch((err) => {
-                alert("Failed to fetch data!");
-                console.error(err);
-            });
-    }
+    // function fetchData() {
+    //     fetch(
+    //         `${PUBLIC_API_URL}/article?status=publish`,
+    //     )
+    //         .then((res) => res.json())
+    //         .then((data) => {
+    //             items = data.data;
+    //         })
+    //         .catch((err) => {
+    //             alert("Failed to fetch data!");
+    //             console.error(err);
+    //         });
+    // }
 
-    onMount(() => {
-        fetchData();
-    });
+    // onMount(() => {
+        
+    // });
 </script>
 <svelte:head>
     <title>My Articles 📰!</title>
@@ -47,12 +47,6 @@
             </p>
             <a type="button" href="/posts" class="text-white bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Lets ✍️ your own articles!</a>
         </div> 
-        <div class="grid gap-8 lg:grid-cols-2">
-             
-            {#each items as item}
-            <ArticleItem id={item.id} title="{item.title}" content="{item.content}" category="{item.category}" createdDate="{item.created_date}"/>
-            {/each}
-                              
-        </div>  
+        
     </div>
   </section>
