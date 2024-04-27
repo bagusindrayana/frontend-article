@@ -14,7 +14,8 @@
      * @type {string}
      */
     let shortDescription;
-    let dateFormat = new Date(createdDate)
+    let dateFormat = new Date(new Date(createdDate).toLocaleString('en', {timeZone: 'Asia/Makassar'}))
+    
     let timeAgoText = new TimeAgo('en-US').format(dateFormat);
 
     const cleanShortDescription = () => {

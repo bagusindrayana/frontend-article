@@ -29,12 +29,13 @@
     function getArticle() {
         article = data;
         //readableCreatedDate with format F- j, Y
-        let date = new Date(article.created_date);
-                readableCreatedDate = date.toLocaleString("en-US", {
-                    month: "long",
-                    day: "numeric",
-                    year: "numeric",
-                });
+        let date = new Date(new Date(article.created_date).toLocaleString('en', {timeZone: 'Asia/Makassar'}))
+        
+        readableCreatedDate = date.toLocaleString("en-US", {
+            month: "long",
+            day: "numeric",
+            year: "numeric",
+        });
     }
 
     onMount(() => {
