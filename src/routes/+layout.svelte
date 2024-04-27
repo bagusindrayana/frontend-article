@@ -7,8 +7,10 @@
         NavUl,
         NavHamburger,
     } from "flowbite-svelte";
+    import TimeAgo from 'javascript-time-ago';
+    import en from 'javascript-time-ago/locale/en';
+    TimeAgo.addDefaultLocale(en);
 </script>
-
 <svelte:head>
     <title>My Articles 📰!</title>
 </svelte:head>
