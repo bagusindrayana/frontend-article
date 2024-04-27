@@ -4,6 +4,7 @@
         ArrowRightOutline,
         TrashBinSolid,
         EditSolid,
+        EyeSolid
     } from "flowbite-svelte-icons";
     import {
         Table,
@@ -125,6 +126,13 @@
                     <TableBodyCell>{item.category}</TableBodyCell>
                     <TableBodyCell>
                         <div class="flex p-2 gap-2">
+                            <a
+                                href="/posts/{item.id}"
+                                type="button"
+                                class="px-3 py-2 flex text-xs font-medium text-center text-white bg-blue-500 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                            >
+                                <EyeSolid class="w-4 h-4" /> Preview
+                            </a>
                             <a
                                 href="/posts/{item.id}/edit"
                                 type="button"

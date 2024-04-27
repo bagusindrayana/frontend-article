@@ -10,7 +10,10 @@
      * }} data
      */
     export let data;
-    import { ArrowLeftOutline, FloppyDiskAltSolid } from "flowbite-svelte-icons";
+    import {
+        ArrowLeftOutline,
+        FloppyDiskAltSolid,
+    } from "flowbite-svelte-icons";
     import Quill from "quill";
     import { onMount } from "svelte";
     import { Label, Input, Select } from "flowbite-svelte";
@@ -20,26 +23,17 @@
     /**
      * @type {string}
      */
-    let status = data.status;
-
-    let statuses = [
-        { value: "draft", name: "Draft" },
-        { value: "publish", name: "Publish" },
-        { value: "thrash", name: "Thrash" },
-    ];
+    let title = data.title;
 
     /**
      * @type {string}
      */
-     let title = data.title;
+    let category = data.category;
 
-     /**
-     * @type {string}
+    /**
+     * @param {string} status
      */
-     let category = data.category;
-
-
-     function sendRequest() {
+    function sendRequest(status) {
         /**
          * @type {string}
          */
@@ -54,7 +48,7 @@
             return;
         }
 
-        let cleanContent = content.replace(/<[^>]*>?/gm, '');
+        let cleanContent = content.replace(/<[^>]*>?/gm, "");
         //min content 200
         if (cleanContent.length < 200) {
             alert("Content must be at least 200 characters!");
@@ -81,7 +75,7 @@
                 alert("Failed to save article!");
                 console.error(err);
             });
-     }
+    }
 
     onMount(() => {
         const editor = new Quill("#editor", {
@@ -120,29 +114,32 @@
                 {@html data.content}
             </div>
         </div>
-        
+
         <div class="my-3">
             <Label for="category-input" class="block mb-2">Category</Label>
-            <Input id="category-input" placeholder="Category..." bind:value={category}/>
+            <Input
+                id="category-input"
+                placeholder="Category..."
+                bind:value={category}
+            />
         </div>
-        <div class="my-3">
-            <Label for="status-input" class="block mb-2">Status</Label>
-            <Select
-                bind:value={status}
-                id="status-input"
-                placeholder="Status..."
-            >
-                {#each statuses as { value, name }}
-                    <option {value}>{name}</option>
-                {/each}
-            </Select>
-        </div>
-        <div class="my-3">
+
+        <div class="my-3 flex gap-3">
             <button
-                on:click={sendRequest}
+                on:click={() => {
+                    sendRequest("draft");
+                }}
+                class="flex text-white bg-gradient-to-br from-blue-500 to-teal-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-200 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
+            >
+                <FloppyDiskAltSolid /> Draft
+            </button>
+            <button
+                on:click={() => {
+                    sendRequest("publish");
+                }}
                 class="flex text-white bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
             >
-                <FloppyDiskAltSolid/> Save
+                <FloppyDiskAltSolid /> Publish
             </button>
         </div>
     </div>

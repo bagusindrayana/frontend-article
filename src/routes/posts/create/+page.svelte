@@ -6,16 +6,6 @@
     import { PUBLIC_API_URL } from "$env/static/public";
     import { goto } from "$app/navigation";
 
-    /**
-     * @type {string}
-     */
-    let status;
-
-    let statuses = [
-        { value: "draft", name: "Draft" },
-        { value: "publish", name: "Publish" },
-        // { value: "thrash", name: "Thrash" },
-    ];
 
     /**
      * @type {string}
@@ -28,7 +18,10 @@
      let category;
 
 
-     function sendRequest() {
+     /**
+     * @param {string} status
+     */
+    function sendRequest(status) {
         /**
          * @type {string}
          */
@@ -117,24 +110,22 @@
             <Label for="category-input" class="block mb-2">Category</Label>
             <Input id="category-input" placeholder="Category..." bind:value={category}/>
         </div>
-        <div class="my-3">
-            <Label for="status-input" class="block mb-2">Status</Label>
-            <Select
-                bind:value={status}
-                id="status-input"
-                placeholder="Status..."
-            >
-                {#each statuses as { value, name }}
-                    <option {value}>{name}</option>
-                {/each}
-            </Select>
-        </div>
-        <div class="my-3">
+        <div class="my-3 flex gap-3">
             <button
-                on:click={sendRequest}
+                on:click={() => {
+                    sendRequest("draft");
+                }}
+                class="flex text-white bg-gradient-to-br from-blue-500 to-teal-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-200 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
+            >
+                <FloppyDiskAltSolid /> Draft
+            </button>
+            <button
+                on:click={() => {
+                    sendRequest("publish");
+                }}
                 class="flex text-white bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
             >
-                <FloppyDiskAltSolid/> Save
+                <FloppyDiskAltSolid /> Publish
             </button>
         </div>
     </div>
